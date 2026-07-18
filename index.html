@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdiCards | Tarjetas Digitales, Invitaciones y Felicitaciones Premium</title>
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ==========================================================================
+           CONFIGURACIÓN DE DISEÑO - IDENTIDAD ADICARDS
+           ========================================================================== */
+        :root {
+            --bg-dark: #000000;       /* Negro absoluto del logotipo */
+            --bg-surface: #0a0a0a;    /* Superficie sutil para las secciones/tarjetas */
+            --card-border: rgba(255, 255, 255, 0.05);
+            --text-main: #ffffff;     /* Blanco puro */
+            --text-muted: #a3a3a3;    /* Gris claro elegante */
+            --brand-red: #e11d48;     /* Rojo vibrante de ADI */
+            --brand-gold: #c5a059;    /* Dorado de la tarjeta del isotipo */
+            --brand-blue: #0284c7;    /* Azul de la tarjeta del isotipo */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Contenedor Global */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ==========================================================================
+           HEADER / SECCIÓN HERO
+           ========================================================================== */
+        header {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .logo-container {
+            max-width: 320px;
+            margin: 0 auto 32px;
+        }
+
+        .logo-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 40px 0 80px;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .hero-title span {
+            color: var(--brand-red);
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        /* Botón de Acción Principal (CTA) */
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--brand-red);
+            color: #ffffff;
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 10px 25px rgba(225, 29, 72, 0.3);
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            background: #f43f5e;
+            box-shadow: 0 12px 30px rgba(225, 29, 72, 0.45);
+        }
+
+        /* ==========================================================================
+           SECCIÓN SERVICIOS
+           ========================================================================== */
+        .services-section {
+            padding: 80px 0;
+            background: var(--bg-surface);
+            border-top: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 48px;
+            letter-spacing: -0.5px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.25s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Asignación de colores del logotipo a cada servicio */
+        .icon-red { color: var(--brand-red); }
+        .icon-gold { color: var(--brand-gold); }
+        .icon-blue { color: var(--brand-blue); }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           SECCIÓN CATÁLOGO / PORTAFOLIO
+           ========================================================================== */
+        .portfolio-section {
+            padding: 80px 0;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .portfolio-item {
+            background: var(--bg-surface);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.25s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+        }
+
+        .item-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            object-fit: cover;
+            border: 2px solid var(--text-muted);
+        }
+
+        /* Bordes personalizados del catálogo basados en su propia identidad */
+        .border-red { border-color: var(--brand-red); }
+        .border-gold { border-color: var(--brand-gold); }
+        .border-blue { border-color: var(--brand-blue); }
+
+        .portfolio-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .portfolio-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           FOOTER
+           ========================================================================== */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--card-border);
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        footer span {
+            color: var(--brand-red);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado con Logotipo -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <!-- Reemplaza con la ruta de tu logo real en GitHub -->
+                <img src="adicards-logo.png" alt="AdiCards Logo" class="logo-img">
+            </div>
+        </div>
+    </header>
+
+    <!-- Presentación Principal (Hero) -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Tu identidad profesional en <span>un solo clic</span></h1>
+            <p class="hero-subtitle">Diseñamos tarjetas de presentación digitales, invitaciones exclusivas y felicitaciones interactivas premium que impactan y trascienden.</p>
+            <a href="https://wa.me/5655576283" target="_blank" class="btn-cta">
+                <i class="fa-brands fa-whatsapp"></i> Cotizar Mi Tarjeta
+            </a>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios basados en la bajada del logotipo -->
+    <section id="servicios" class="services-section">
+        <div class="container">
+            <h2 class="section-title">Soluciones Digitales Interactivas</h2>
+            <div class="services-grid">
+                
+                <!-- Servicio 1: Tarjetas -->
+                <div class="service-card">
+                    <i class="fa-solid fa-address-card service-icon icon-red"></i>
+                    <h3>Tarjetas Digitales</h3>
+                    <p>Diseño premium optimizado para celulares con enlaces a tus redes, botón de guardado automático de contacto y código QR integrado.</p>
+                </div>
+
+                <!-- Servicio 2: Invitaciones -->
+                <div class="service-card">
+                    <i class="fa-solid fa-envelope-open-text service-icon icon-gold"></i>
+                    <h3>Invitaciones</h3>
+                    <p>Elegancia digital para tus eventos de alta gama. Bodas, XV años y reuniones privadas con confirmación directa por WhatsApp.</p>
+                </div>
+
+                <!-- Servicio 3: Felicitaciones -->
+                <div class="service-card">
+                    <i class="fa-solid fa-cake-candles service-icon icon-blue"></i>
+                    <h3>Felicitaciones</h3>
+                    <p>Sorprende de manera única y original. Tarjetas interactivas de aniversario o cumpleaños con música, galerías e impacto garantizado.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Catálogo Real -->
+    <section id="catalogo" class="portfolio-section">
+        <div class="container">
+            <h2 class="section-title">Modelos en Catálogo</h2>
+            <div class="portfolio-grid">
+
+                <!-- Item 1: DJ Vic Pérez -->
+                <a href="https://adi-art-design.github.io/DjVicPerez/" target="_blank" class="portfolio-item">
+                    <img src="avatar-vic.jpg" alt="DJ Vic Pérez" class="item-avatar border-red">
+                    <h4>Dj Vic Pérez</h4>
+                    <p>Atmósferas Musicales</p>
+                </a>
+
+                <!-- Item 2: VP Experience Group -->
+                <a href="https://adicards.github.io/vpexperience/" target="_blank" class="portfolio-item">
+                    <img src="avatar-vp.jpg" alt="VP Experience Group" class="item-avatar border-gold">
+                    <h4>VP Experience</h4>
+                    <p>Consultoría de Negocios</p>
+                </a>
+
+                <!-- Item 3: La Red Soluciones -->
+                <a href="https://adicards.github.io/lared/" target="_blank" class="portfolio-item">
+                    <img src="avatar-lared.jpg" alt="La Red Soluciones" class="item-avatar border-blue">
+                    <h4>Alberto Nájera R.</h4>
+                    <p>Ingeniería en Sistemas</p>
+                </a>
+
+                <!-- Item 4: José Jair -->
+                <a href="https://adicards.github.io/josejair/" target="_blank" class="portfolio-item">
+                    <img src="avatar-jair.jpg" alt="José Jair" class="item-avatar border-gold">
+                    <h4>José Jair</h4>
+                    <p>Balada Romántica</p>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AdiCards. Una división de <span>ADI Art & Design</span>.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
